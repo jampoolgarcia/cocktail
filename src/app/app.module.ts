@@ -9,8 +9,8 @@ import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 
 // compoents
-import { CooktailsComponent } from './cocktail/pages/cooktails/cooktails.component';
-import { CooktailDetailsComponent } from './cocktail/pages/cooktail-details/cooktail-details.component';
+import { CocktailsComponent } from './cocktail/pages/cocktails/coktails.component';
+import { CocktailDetailsComponent } from './cocktail/pages/cocktail-details/cocktail-details.component';
 import { FilterComponent } from './cocktail/components/filter/filter.component';
 
 @NgModule({
@@ -19,8 +19,8 @@ import { FilterComponent } from './cocktail/components/filter/filter.component';
     AppComponent,
 
     // components
-    CooktailsComponent,
-    CooktailDetailsComponent,
+    CocktailsComponent,
+    CocktailDetailsComponent,
     FilterComponent
   ],
   imports: [

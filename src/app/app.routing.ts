@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CooktailDetailsComponent } from './cocktail/pages/cooktail-details/cooktail-details.component';
-import { CooktailsComponent } from './cocktail/pages/cooktails/cooktails.component';
+import { CocktailDetailsComponent } from './cocktail/pages/cocktail-details/cocktail-details.component';
+import { CocktailsComponent } from './cocktail/pages/cocktails/coktails.component';
 
 
 const routes: Routes = [
     {
-        path: 'coocktails',
-        component: CooktailsComponent
+        path: 'cocktails',
+        component: CocktailsComponent
     },
     {
-        path: 'coocktail-details/:id',
-        component: CooktailDetailsComponent
+        path: 'cocktail-details/:id',
+        component: CocktailDetailsComponent
     },
     {
         path: '**',
         pathMatch: 'full',
-        redirectTo: 'coocktails'
+        redirectTo: 'cocktails'
     }
 ]
 
