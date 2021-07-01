@@ -35,7 +35,7 @@ export class CocktailsComponent implements OnInit {
 
     this._service.getByFirstLetter()
       .subscribe(res =>{
-        console.log(res);
+        console.log('res data:', res);
         this.isLoading = false;
       }, err => {
         console.log(err);

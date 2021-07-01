@@ -19,11 +19,11 @@ export class Cocktail implements CocktailI {
     }
 
     get id(): string{
-        return _.get(this, 'data.idDirnk');
+        return _.get(this, 'data.idDrink');
     }
 
     get name(): string{
-        return _.get(this, 'data.strDirnk');
+        return _.get(this, 'data.strDrink');
     }
     
     get img(): string{
@@ -51,7 +51,7 @@ export class Cocktail implements CocktailI {
     }
 
     get instruccions(): string{
-        return _.get(this, 'strInstructionsES') ? _.get(this, 'strInstructionsES') : _.get(this, 'data.strInstrucions');
+       return _.get(this, 'data.strInstructionsES') ? _.get(this, 'data.strInstructionsES') : _.get(this, 'data.strInstructions');
     }
 
     private getList(property: string): string[] {
