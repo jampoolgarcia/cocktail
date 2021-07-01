@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FilterI } from '../../components/filter/filter.interface';
+import { CocktailI } from '../../model/cocktail';
+import { CocktailService } from '../../services/cocktail.service';
 
 @Component({
   selector: 'app-cocktails',
@@ -10,10 +12,13 @@ import { FilterI } from '../../components/filter/filter.interface';
 export class CocktailsComponent implements OnInit {
 
   public isShowFilter: boolean = true;
+  public isLoading: boolean = false;
+  public recordList: CocktailI[] =[];
 
-  constructor() { }
+  constructor(private _service: CocktailService) { }
 
   ngOnInit(): void {
+    this.getDefaultRecords();
   }
 
   changeShowFilter(){
@@ -24,6 +29,19 @@ export class CocktailsComponent implements OnInit {
     console.log(filter);
   }
 
+  getDefaultRecords(){
+
+    this.isLoading = true;
+
+    this._service.getByFirstLetter()
+      .subscribe(res =>{
+        console.log(res);
+        this.isLoading = false;
+      }, err => {
+        console.log(err);
+      })
+      
+  }
   
 
 }

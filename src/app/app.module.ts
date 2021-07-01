@@ -2,6 +2,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'
+import { HttpClientModule } from '@angular/common/http';
 
 // routing 
 import { AppRoutingModule } from './app.routing';
@@ -28,6 +29,7 @@ import { FilterComponent } from './cocktail/components/filter/filter.component';
     // angular
     BrowserModule,
     FormsModule,
+    HttpClientModule,
 
     // routing
     AppRoutingModule,
