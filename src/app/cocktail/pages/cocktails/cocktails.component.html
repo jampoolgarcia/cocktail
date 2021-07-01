@@ -1,2 +1,16 @@
-<p>coktails works!</p>
-<app-filter></app-filter>
+<div class="row my-2">
+    <div class="col-12">
+        <button type="button" class="btn btn-primary w-100" (click)="changeShowFilter()">{{ isShowFilter ? 'hidden filter' : 'show filter' }}</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <app-filter *ngIf="isShowFilter" (onFilter)="onFilter($event)"></app-filter>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <p>list</p>
+    </div>
+</div>
+

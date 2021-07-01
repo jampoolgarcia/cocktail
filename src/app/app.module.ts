@@ -1,6 +1,7 @@
 //  angular modules
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms'
 
 // routing 
 import { AppRoutingModule } from './app.routing';
@@ -21,11 +22,12 @@ import { FilterComponent } from './cocktail/components/filter/filter.component';
     // components
     CocktailsComponent,
     CocktailDetailsComponent,
-    FilterComponent
+    FilterComponent,
   ],
   imports: [
     // angular
     BrowserModule,
+    FormsModule,
 
     // routing
     AppRoutingModule,
