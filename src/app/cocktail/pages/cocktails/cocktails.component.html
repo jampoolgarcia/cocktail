@@ -11,7 +11,7 @@
     </div>
     <ng-container *ngIf="!isLoading; else spinner">
         <div class="row my-4">
-            <div *ngFor="let record of recordList" class="col-12 col-lg-3 col-sm-4 col-md-6 mb-4">
+            <div *ngFor="let record of recordList | paginate: { itemsPerPage: itemsPerPage, currentPage: page }" class="col-12 col-lg-3 col-sm-4 col-md-6 mb-4">
                 <div class="card shadow">
                     <img class="card-img-top" [src]="record.img" alt="record.name">
                     <div class="card-body">
@@ -21,6 +21,11 @@
                         <a name="details" class="btn btn-primary w-100" role="button">See details</a>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div *ngIf="recordList.length > itemsPerPage" class="col-12 d-flex justify-content-center">
+                <pagination-controls (pageChange)="page = $event"></pagination-controls>
             </div>
         </div>
     </ng-container>

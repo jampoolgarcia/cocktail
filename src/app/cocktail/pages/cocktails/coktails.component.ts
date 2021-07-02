@@ -14,6 +14,8 @@ export class CocktailsComponent implements OnInit {
   public isShowFilter: boolean = true;
   public isLoading: boolean = false;
   public recordList: CocktailI[] =[];
+  public page: number = 1;
+  public itemsPerPage: number = 10;
 
   constructor(private _service: CocktailService) { }
 

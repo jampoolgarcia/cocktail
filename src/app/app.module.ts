@@ -7,6 +7,9 @@ import { HttpClientModule } from '@angular/common/http';
 // routing 
 import { AppRoutingModule } from './app.routing';
 
+// external modules
+import { NgxPaginationModule } from 'ngx-pagination';
+
 // root component
 import { AppComponent } from './app.component';
 
@@ -30,6 +33,9 @@ import { FilterComponent } from './cocktail/components/filter/filter.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+
+    // modules
+    NgxPaginationModule,
 
     // routing
     AppRoutingModule,
