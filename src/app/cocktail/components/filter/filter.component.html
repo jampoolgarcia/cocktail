@@ -5,7 +5,7 @@
                 <label for="filterBy">Search By:</label>
                 <select class="form-control" name="filterBy" [(ngModel)]="filter.searchBy" [disabled]="isDisabled" required>
                     <option selected value="">Select one</option>
-                    <option *ngFor="let item of filterBy"  [value]="item">{{ item }}</option>
+                    <option *ngFor="let item of filterBy"  [value]="item">{{ item | capitalize }}</option>
                 </select>
             </div>
         </div>

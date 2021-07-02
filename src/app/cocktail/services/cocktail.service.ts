@@ -35,6 +35,16 @@ export class CocktailService {
 
   }
 
+  getById(id:string): Observable<CocktailI>{
+    return this._http.get<CocktailI>(`${this.url_base}lookup.php?i=${id}`)
+        .pipe(
+          map(res => {
+            let data = this.parseData(_.get(res, 'drinks'));
+            return data[0];
+          })
+        )
+  }
+
   private selectFilterUrl(filter: FilterI): string{
     let url: string = '';
 
@@ -63,7 +73,6 @@ export class CocktailService {
     return url;
   }
 
-
   private parseData(recordList = []): CocktailI[]{
       let newRecordList: CocktailI[] = []
 
@@ -74,4 +83,6 @@ export class CocktailService {
 
       return newRecordList;
   }
+
+  
 }

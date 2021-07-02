@@ -14,9 +14,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AppComponent } from './app.component';
 
 // compoents
-import { CocktailsComponent } from './cocktail/pages/cocktails/coktails.component';
+import { CocktailsComponent } from './cocktail/pages/cocktails/cocktails.component';
 import { CocktailDetailsComponent } from './cocktail/pages/cocktail-details/cocktail-details.component';
 import { FilterComponent } from './cocktail/components/filter/filter.component';
+
+// pipes 
+import { CapitalizePipe } from './cocktail/pipes/capitalize.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { FilterComponent } from './cocktail/components/filter/filter.component';
     CocktailsComponent,
     CocktailDetailsComponent,
     FilterComponent,
+
+    // pipes 
+    CapitalizePipe
   ],
   imports: [
     // angular

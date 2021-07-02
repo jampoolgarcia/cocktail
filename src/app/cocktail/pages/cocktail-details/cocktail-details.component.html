@@ -1,1 +1,53 @@
-<p>cocktail-details works!</p>
+<ng-container *ngIf="!isLoading; else spinner">
+    <ng-container *ngIf="record; else notExist">
+        <div class="row my-2">
+            <div class="col-12 text-center">
+                <h2>{{ record.name }}</h2>
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col-12">
+                <img class="img-fluid" [src]="record.img" [alt]="record.name">
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col-12 text-center">
+                <h3>instruccions</h3>
+                <p>{{ record.instruccions }}</p>
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col-6 text-center">
+                <ul class="list-group">
+                    <li class="list-group-item active"><h3>Ingredients</h3></li>
+                    <li class="list-group-item" *ngFor="let item of record.ingredients">{{ item }}</li>
+                </ul>
+            </div>
+            <div class="col-6 text-center">
+                <ul class="list-group">
+                    <li class="list-group-item active"><h3>Measures</h3></li>
+                    <li class="list-group-item" *ngFor="let item of record.measures">{{ item }}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col-12">
+                <a name="back" class="btn btn-primary w-100" [routerLink]="['/cocktails']" role="button">back</a>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #notExist>
+        <h2>Details for this cocktail not found...</h2>
+        <a name="back" class="btn btn-primary" [routerLink]="['/cocktails']" role="button">back</a>
+    </ng-template>
+</ng-container>
+<ng-template #spinner>
+    <div class="row my-4">
+        <div class="col-12 d-flex justify-content-center">
+            <div class="spinner-grow spinner text-primary" role="status">
+                <span class="sr-only"></span>
+            </div>
+        </div>
+    </div>
+</ng-template>
+

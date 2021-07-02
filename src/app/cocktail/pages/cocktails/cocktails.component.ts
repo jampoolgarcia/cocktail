@@ -15,7 +15,7 @@ export class CocktailsComponent implements OnInit {
   public isLoading: boolean = false;
   public recordList: CocktailI[] =[];
   public page: number = 1;
-  public itemsPerPage: number = 10;
+  public itemsPerPage: number = 12;
 
   constructor(private _service: CocktailService) { }
 
