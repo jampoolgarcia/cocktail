@@ -1,10 +1,10 @@
-<form (ngSubmit)="onSubmit()">
+<form #form="ngForm" (ngSubmit)="onSubmit()">
     <div class="row no-gutters">
         <div class="col-4">
             <div class="form-group">
                 <label for="filterBy">Search By:</label>
-                <select class="form-control" name="filterBy" [(ngModel)]="filter.searchBy">
-                    <option selected>Select one</option>
+                <select class="form-control" name="filterBy" [(ngModel)]="filter.searchBy" [disabled]="isDisabled" required>
+                    <option selected value="">Select one</option>
                     <option *ngFor="let item of filterBy"  [value]="item">{{ item }}</option>
                 </select>
             </div>
@@ -12,11 +12,19 @@
         <div class="col-4">
             <div class="form-group">
               <label for="value">Name</label>
-              <input type="text" class="form-control" name="value" [(ngModel)]="filter.value" aria-describedby="search" placeholder="Enter a value for your search...">
+              <input type="text" class="form-control" name="value" [(ngModel)]="filter.value" [disabled]="isDisabled" aria-describedby="search" placeholder="Enter a value for your search..." required>
             </div>
         </div>
         <div class="col-4 align-self-end">
-            <button type="submit" name="fiter" class="btn btn-primary w-100">Filter</button>
+            <button type="submit" name="fiter" [disabled]="form.invalid || isDisabled" class="btn btn-primary w-100">
+                <ng-container *ngIf="!isDisabled; else loading">
+                    Filter
+                </ng-container>
+                <ng-template #loading>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    <span class="sr-only">Loading...</span>
+                </ng-template> 
+            </button>
         </div>
     </div>
 </form>

@@ -4,8 +4,8 @@ export interface FilterI {
 }
 
 export enum FilterBy { 
-    name,
-    glass,
-    ingredient,
-    category,
+    name = 'name',
+    glass = 'glass',
+    ingredient = 'ingredient',
+    category = 'category',
 } 

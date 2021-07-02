@@ -3,27 +3,68 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import * as _ from 'lodash';
 import { Cocktail, CocktailI } from '../model/cocktail';
+import { FilterBy, FilterI } from '../components/filter/filter.interface';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CocktailService {
 
-  private url = 'https://www.thecocktaildb.com/api/json/v1/1/';
+  private url_base = 'https://www.thecocktaildb.com/api/json/v1/1/';
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient){ }
 
-  getByFirstLetter(value: string = 'a'){
+  getByFirstLetter(value: string = 'a'): Observable<CocktailI[]> {
     let letter = value.charAt(0);
-    let fullUrl = `${this.url}search.php?f=${letter}`;
-    return this._http.get(fullUrl)
-    .pipe(
-      map(res => this.parseData(_.get(res, 'drinks')))
-    );
+    let url = `${this.url_base}search.php?f=${letter}`;
+    return this._http.get(url)
+      .pipe(
+        map(res => this.parseData(_.get(res, 'drinks')))
+      );
+  }
+
+  getFilter(filter: FilterI): Observable<CocktailI[]>{
+
+    let url = this.selectFilterUrl(filter);
+
+    return this._http.get(url)
+      .pipe(
+        map(res => this.parseData(_.get(res, 'drinks')))
+      );
+
+  }
+
+  private selectFilterUrl(filter: FilterI): string{
+    let url: string = '';
+
+    if(filter.searchBy == FilterBy.name){
+      url = `${this.url_base}search.php?s=`
+    }else{
+      url = `${this.url_base}filter.php?`;
+      switch(filter.searchBy){
+        case FilterBy.glass:
+            url += 'g=';
+          break;
+        case FilterBy.ingredient:
+            url += 'i=';
+          break;
+        case FilterBy.category:
+            url+= 'c=';
+          break;
+        default:
+            url += 'g=';
+          break;
+      }
+    }
+
+    url += filter.value
+
+    return url;
   }
 
 
-  private parseData(recordList = []){
+  private parseData(recordList = []): CocktailI[]{
       let newRecordList: CocktailI[] = []
 
       _.forEach(recordList,  record => {

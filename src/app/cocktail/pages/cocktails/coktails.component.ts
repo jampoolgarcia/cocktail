@@ -26,16 +26,24 @@ export class CocktailsComponent implements OnInit {
   }
 
   onFilter(filter: FilterI){
-    console.log(filter);
+    this.isLoading = true;
+
+    this._service.getFilter(filter)
+      .subscribe(data =>{
+        this.recordList = data;
+        this.isLoading = false;
+      }, err => {
+        console.log(err);
+      }
+    );
   }
 
   getDefaultRecords(){
-
     this.isLoading = true;
 
     this._service.getByFirstLetter()
-      .subscribe(res =>{
-        console.log('res data:', res);
+      .subscribe(data =>{
+        this.recordList = data;
         this.isLoading = false;
       }, err => {
         console.log(err);

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FilterBy, FilterI } from './filter.interface';
 
 @Component({
@@ -11,6 +11,8 @@ export class FilterComponent implements OnInit {
 
   public filter: FilterI = { searchBy: FilterBy.name, value: '' };
   public filterBy: string[] = [];
+
+  @Input() isDisabled: boolean = false;
 
   @Output() onFilter = new EventEmitter<FilterI>();
 

@@ -9,3 +9,8 @@ html, body {
 .bg{
     background: #f3f3f3;
 }
+
+.spinner{
+    width: 3rem !important; 
+    height: 3rem !important;
+}
